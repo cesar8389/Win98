@@ -1,0 +1,57 @@
+body {
+  background: #008080;
+  background-size: 600px auto;
+}
+
+.criptografator {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+}
+
+.startbar {
+  padding: 2px;
+  box-shadow: inset 1px 0 #fff;
+  display: flex;
+  background-color: silver;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #f4f4f4;
+  border-bottom: 1px solid #4e4e4e;
+  position: fixed;
+  z-index: 99999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  justify-content: space-between;
+}
+
+.desktop {
+  display: block;
+  float: left;
+}
+
+.desktop figure {
+  text-align: center;
+  color: white;
+  margin: 0px;
+}
+
+.desktop figure img {
+  width: 32px;
+  height: 32px;
+}
+
+#startbutton{ 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#startbarclock {
+  display: flex;
+  text-align: right;
+}
+

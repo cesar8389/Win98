@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="cifraDeCesar.js"></script>
+    <script type="text/javascript" src="cifraDeVegenere.js"></script>
+    <script type="text/javascript" src="cercaDeTrilho.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function processar() {
+            var tipocripto = document.querySelector('input[name="tipodecriptografia"]:checked').value;
+            var tipoexec = document.querySelector('input[name="tipodeexecucao"]:checked').value;
+            var textocrip = document.getElementById('texto').value;
+            var chavecrip = document.getElementById('chavecriptografia').value;
+            var resultcript;
+            switch (tipocripto) {
+                case "cifradecesar":
+                    switch (tipoexec) {
+                        case "criptografar":
+                            document.getElementById('texto').value = cesarEncrypt(textocrip, parseInt(chavecrip))
+                            break;
+                        case "descriptografar":
+                            document.getElementById('texto').value = cesarDecrypt(textocrip, parseInt(chavecrip));
+                            break;
+                    }
+                    break;
+                case "cifradevegenere":
+                    switch (tipoexec) {
+                        case "criptografar":
+                            document.getElementById('texto').value = vegenereEncrypt(textocrip, chavecrip)
+                            break;
+                        case "descriptografar":
+                            document.getElementById('texto').value = vegenereDecrypt(textocrip, chavecrip);
+                            break;
+                    }
+                    break;
+                case "cercadetrilho":
+                    switch (tipoexec) {
+                        case "criptografar":
+                            document.getElementById('texto').value = trilhoEncrypt(textocrip, parseInt(chavecrip))
+                            break;
+                        case "descriptografar":
+                            document.getElementById('texto').value = trilhoDecrypt(textocrip, parseInt(chavecrip))
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        function getTime() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var time = h + ":" + m + ":" + s;
+            document.getElementById('startbarclock').innerText = time;
+            let t = setTimeout(function(){ currentTime() }, 1000);
+        }
+        getTime();
+    </script>
+</head>
+
+<body>
+    <div class="desktop">
+        <figure id="mycomputer">
+            <img src="src/mycomputer.png" alt="Meu computador">
+            <figcaption>Meu computador</figcaption>
+        </figure>
+        <figure id="mydocuments">
+            <img src="src/mydocuments.png" alt="Meus documentos">
+            <figcaption>Meus documentos</figcaption>
+        </figure>
+    </div>
+    <!--Janela do Criptografator 2000-->
+    <div class="window criptografator" style="width: 300px">
+        <div class="title-bar">
+            <div class="title-bar-text">Criptografator 2000</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            <fieldset>
+                <legend>Escolha o tipo de criptografia</legend>
+                <div class="field-row">
+                    <input type="radio" id="cifradecesar" name="tipodecriptografia" value="cifradecesar">
+                    <label for="cifradecesar">Cifra de César</label>
+                </div>
+                <div class="field-row">
+                    <input type="radio" id="cifradevegenere" name="tipodecriptografia" value="cifradevegenere">
+                    <label for="cifradevegenere">Cifra de Vegenére</label>
+                </div>
+                <div class="field-row">
+                    <input type="radio" id="cercadetrilho" name="tipodecriptografia" value="cercadetrilho">
+                    <label for="cercadetrilho">Cerca de trilho</label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Você quer criptografar ou descriptografar?</legend>
+                <div class="field-row">
+                    <input type="radio" id="criptografar" name="tipodeexecucao" value="criptografar">
+                    <label for="criptografar">Criptografar</label>
+                </div>
+                <div class="field-row">
+                    <input type="radio" id="descriptografar" name="tipodeexecucao" value="descriptografar">
+                    <label for="descriptografar">Descriptografar</label>
+                </div>
+            </fieldset>
+            <div class="field-row-stacked" style="width: 200px">
+                <label for="texto">Insira o texto abaixo:</label>
+                <textarea name="texto" id="texto" rows="8" style="resize: none;"></textarea>
+            </div>
+            <div class="field-row">
+                <label for="chavecriptografia">Digite a chave para criptografia</label>
+            </div>
+            <div class="field-row">
+                <input type="text" name="chavecriptografia" id="chavecriptografia">
+            </div>
+            <div class="field-row">
+                <button onclick="processar()">Faça!</button>
+            </div>
+        </div>
+    </div>
+    <div class="startbar" onload="getTime()">
+        <button id="startbutton"><img src="src/windows-4.png">Start</button>
+        <div id="startbarclock"></div>
+    </div>
+</body>
+
+</html>
