@@ -46,21 +46,20 @@
                     break;
             }
         }
-
         function getTime() {
-            var date = new Date();
-            var h = date.getHours();
-            var m = date.getMinutes();
-            var s = date.getSeconds();
-            var time = h + ":" + m + ":" + s;
-            document.getElementById('startbarclock').innerText = time;
-            let t = setTimeout(function(){ currentTime() }, 1000);
+            setInterval(function () {
+                var date = new Date();
+                var h = date.getHours();
+                var m = date.getMinutes();
+                var time = h + ":" + m;
+                document.getElementById("startbarclock").innerText = time;
+            }, 1000);
+
         }
-        getTime();
     </script>
 </head>
 
-<body>
+<body onload="getTime()">
     <div class="desktop">
         <figure id="mycomputer">
             <img src="src/mycomputer.png" alt="Meu computador">
@@ -123,10 +122,24 @@
             </div>
         </div>
     </div>
-    <div class="startbar" onload="getTime()">
-        <button id="startbutton"><img src="src/windows-4.png">Start</button>
-        <div id="startbarclock"></div>
-    </div>
+    <!--Janela do Bloco de notas-->
+    <div class="window notepad" >
+        <div class="title-bar">
+            <div class="title-bar-text">Bloco de notas</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div id="menubar"><p><u>A</u>rquivo</p><p><u>E</u>ditar</p><p><u>A</u>juda</p></div>
+            <textarea id="notepadtext"></textarea>
+        </div>
+        <div class="startbar">
+            <button id="startbutton"><img src="src/windows-4.png">Start</button>
+            <div id="startbarclock"></div>
+        </div>
 </body>
 
 </html>

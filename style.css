@@ -9,6 +9,30 @@ body {
   left: 200px;
 }
 
+.notepad{
+  display: block;
+  position: absolute;
+  top: 300px;
+  left: 800px;
+  height: 500px;
+  width: 800px;
+}
+
+.notepad textarea{
+  height: 85%;
+  width: 100%;
+  resize: none;
+}
+
+#menubar {
+  display: flex;
+  margin-top: -10;
+}
+
+#menubar p{
+  margin-right: 5px;
+}
+
 .startbar {
   padding: 2px;
   box-shadow: inset 1px 0 #fff;

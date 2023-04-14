@@ -5,7 +5,10 @@ function trilhoEncrypt(str, rails) {
     throw new Error(
       "rails is a required parameter and it must be bigger than 2"
     );
-
+  rails = parseInt(String(rails).charAt(0))
+  rails < 2 ? rails+=1 : null;
+  console.log(rails)
+  console.log(rails)
   // cria uma matriz com a quantidade de trilhos (arrays), cada trilho é um array vazio
   let fence = new Array(rails).fill("").map(() => []);
 
@@ -34,6 +37,9 @@ function trilhoDecrypt(str, rails) {
   // Checa se os parametros estão satisfeitos, caso contrario disparará um erro
   if (!str || str.length < 2) throw new Error("str is a required parameter");
   if (rails < 2 || !rails)throw new Error("rails is a required parameter and it must be bigger than 2");
+
+  rails = parseInt(String(rails).charAt(0))
+  rails < 2 ? rails+=1 : null;
 
   let fence = new Array(rails).fill(null).map(() => []);
   let position = 0;
